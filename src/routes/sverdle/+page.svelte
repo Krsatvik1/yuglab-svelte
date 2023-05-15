@@ -4,10 +4,8 @@
 
 	import { reduced_motion } from './reduced-motion';
 
-	/** @type {import('./$types').PageData} */
 	export let data;
 
-	/** @type {import('./$types').ActionData} */
 	export let form;
 
 	/** Whether or not the user has won */
@@ -22,14 +20,12 @@
 	/**
 	 * A map of classnames for all letters that have been guessed,
 	 * used for styling the keyboard
-	 * @type {Record<string, 'exact' | 'close' | 'missing'>}
 	 */
 	let classnames;
 
 	/**
 	 * A map of descriptions for all letters that have been guessed,
 	 * used for adding text for assistive technology (e.g. screen readers)
-	 * @type {Record<string, string>}
 	 */
 	let description;
 
@@ -57,11 +53,10 @@
 	/**
 	 * Modify the game state without making a trip to the server,
 	 * if client-side JavaScript is enabled
-	 * @param {MouseEvent} event
 	 */
 	function update(event) {
 		const guess = data.guesses[i];
-		const key = /** @type {HTMLButtonElement} */ (event.target).getAttribute('data-key');
+		const key = (event.target).getAttribute('data-key');
 
 		if (key === 'backspace') {
 			data.guesses[i] = guess.slice(0, -1);
@@ -74,7 +69,6 @@
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard to play the game
-	 * @param {KeyboardEvent} event
 	 */
 	function keydown(event) {
 		if (event.metaKey) return;
